@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BBQ des Frères 🔥</title>
-<link rel="icon" type="image/x-icon" href="https://i.ibb.co/zh7bx78F/barbeque.png">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -381,8 +380,8 @@
 // ═══════════════════════════════════════════════
 //  ⚙️  CONFIG SUPABASE — À REMPLIR
 // ═══════════════════════════════════════════════
-const SUPABASE_URL = 'https://ieffsqvvhmgxsexagccd.supabase.co';         // ex: https://abcdef.supabase.co
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllZmZzcXZ2aG1neHNleGFnY2NkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyMTc3MjYsImV4cCI6MjA5MDc5MzcyNn0.IOam1Q0ByBfbUPC509H8aAg7GlYkVY4w2DQIZrsR8Oc'; // clé "anon public"
+const SUPABASE_URL = 'https://ieffsqvvhmgxsexagccd.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllZmZzcXZ2aG1neHNleGFnY2NkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyMTc3MjYsImV4cCI6MjA5MDc5MzcyNn0.IOam1Q0ByBfbUPC509H8aAg7GlYkVY4w2DQIZrsR8Oc';
 const ADMIN_CODE = '2612';
 // ═══════════════════════════════════════════════
 
@@ -639,7 +638,14 @@ function renderAdminPeople() {
     inp.onchange = () => { STATE.people[i] = inp.value; };
     const del = document.createElement('button');
     del.className='del-btn'; del.textContent='✕';
-    del.onclick = () => { STATE.people.splice(i,1); renderAdminPeople(); renderList(); renderPersonGrid(); };
+    del.onclick = async () => {
+      STATE.people.splice(i, 1);
+      await saveConfig('people', STATE.people);
+      await loadAll();
+      renderAdminPeople();
+      renderList();
+      renderPersonGrid();
+    };
     row.appendChild(inp); row.appendChild(del); list.appendChild(row);
   });
 }
@@ -652,7 +658,12 @@ function addPerson() {
 
 async function savePeople() {
   const ok = await saveConfig('people', STATE.people);
-  if (ok) { renderList(); renderPersonGrid(); showToast('✅ Personnes sauvegardées !'); }
+  if (!ok) return;
+  // Recharge depuis Supabase pour être sûr que STATE est à jour
+  await loadAll();
+  renderList();
+  renderPersonGrid();
+  showToast('✅ Personnes sauvegardées !');
 }
 
 function renderAdminItems() {
@@ -666,7 +677,13 @@ function renderAdminItems() {
     inp.onchange = () => { STATE.items[i] = inp.value; };
     const del = document.createElement('button');
     del.className='del-btn'; del.textContent='✕';
-    del.onclick = () => { STATE.items.splice(i,1); renderAdminItems(); renderList(); };
+    del.onclick = async () => {
+      STATE.items.splice(i, 1);
+      await saveConfig('items', STATE.items);
+      await loadAll();
+      renderAdminItems();
+      renderList();
+    };
     row.appendChild(inp); row.appendChild(del); list.appendChild(row);
   });
 }
@@ -679,7 +696,11 @@ function addItem() {
 
 async function saveItems() {
   const ok = await saveConfig('items', STATE.items);
-  if (ok) { renderList(); showToast('✅ Objets sauvegardés !'); }
+  if (!ok) return;
+  await loadAll();
+  renderList();
+  renderPersonGrid();
+  showToast('✅ Objets sauvegardés !');
 }
 
 async function renderHistory() {
