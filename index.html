@@ -8,31 +8,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --fire: #FF4500; --ember: #FF8C00; --gold: #FFD700;
-    --charcoal: #1a1a1a; --smoke: #2d2d2d; --ash: #3d3d3d;
-    --light: #f5f0e8; --success: #4CAF50; --danger: #e53935;
+    --fire:#FF4500;--ember:#FF8C00;--gold:#FFD700;
+    --charcoal:#1a1a1a;--smoke:#2d2d2d;--ash:#3d3d3d;
+    --light:#f5f0e8;--success:#4CAF50;--danger:#e53935;
   }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Outfit',sans-serif; background:var(--charcoal); color:var(--light); min-height:100vh; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Outfit',sans-serif;background:var(--charcoal);color:var(--light);min-height:100vh;}
 
-  /* ── HERO ── */
-  .hero {
-    min-height:100vh; display:flex; flex-direction:column;
-    align-items:center; justify-content:center;
-    position:relative; overflow:hidden;
-    background:radial-gradient(ellipse at 50% 100%,#3a1a00 0%,#1a0800 40%,var(--charcoal) 70%);
-  }
-  .hero::before {
-    content:''; position:absolute; bottom:0; left:0; right:0; height:300px;
-    background:radial-gradient(ellipse at 50% 100%,rgba(255,69,0,.35) 0%,transparent 70%);
-    animation:glow-pulse 2.5s ease-in-out infinite alternate;
-  }
-  @keyframes glow-pulse { from{opacity:.6;transform:scaleX(.95)} to{opacity:1;transform:scaleX(1.05)} }
-
-  .flames { position:absolute; bottom:0; width:100%; display:flex; justify-content:center; gap:8px; padding:0 20%; }
-  .flame { width:18px; border-radius:50% 50% 20% 20%; transform-origin:bottom center; animation:flicker .8s ease-in-out infinite alternate; filter:blur(1px); }
-  .flame:nth-child(odd){animation-delay:-.3s} .flame:nth-child(3n){animation-delay:-.6s;animation-duration:1.1s}
-  @keyframes flicker { 0%{transform:scaleX(1) scaleY(1) rotate(-2deg)} 100%{transform:scaleX(.85) scaleY(1.15) rotate(2deg)} }
+  /* HERO */
+  .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 100%,#3a1a00 0%,#1a0800 40%,var(--charcoal) 70%);}
+  .hero::before{content:'';position:absolute;bottom:0;left:0;right:0;height:300px;background:radial-gradient(ellipse at 50% 100%,rgba(255,69,0,.35) 0%,transparent 70%);animation:glow-pulse 2.5s ease-in-out infinite alternate;}
+  @keyframes glow-pulse{from{opacity:.6;transform:scaleX(.95)}to{opacity:1;transform:scaleX(1.05)}}
+  .flames{position:absolute;bottom:0;width:100%;display:flex;justify-content:center;gap:8px;padding:0 20%;}
+  .flame{width:18px;border-radius:50% 50% 20% 20%;transform-origin:bottom center;animation:flicker .8s ease-in-out infinite alternate;filter:blur(1px);}
+  .flame:nth-child(odd){animation-delay:-.3s}.flame:nth-child(3n){animation-delay:-.6s;animation-duration:1.1s}
+  @keyframes flicker{0%{transform:scaleX(1) scaleY(1) rotate(-2deg)}100%{transform:scaleX(.85) scaleY(1.15) rotate(2deg)}}
   .f1{height:80px;background:linear-gradient(to top,var(--gold),var(--fire));opacity:.9}
   .f2{height:120px;background:linear-gradient(to top,var(--ember),#ff2200);opacity:.85}
   .f3{height:60px;background:linear-gradient(to top,var(--gold),var(--ember));opacity:.7}
@@ -41,191 +31,147 @@
   .f6{height:70px;background:linear-gradient(to top,var(--ember),var(--fire));opacity:.75}
   .f7{height:110px;background:linear-gradient(to top,var(--fire),#aa0000);opacity:.85}
   .f8{height:55px;background:linear-gradient(to top,var(--gold),var(--ember));opacity:.7}
+  .hero-content{position:relative;z-index:2;text-align:center;padding:2rem;animation:rise 1s ease-out both;}
+  @keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+  .hero-emoji{font-size:5rem;display:block;margin-bottom:1rem;filter:drop-shadow(0 0 20px rgba(255,140,0,.8));}
+  h1.big-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,12vw,9rem);letter-spacing:.05em;line-height:.9;background:linear-gradient(135deg,var(--gold) 0%,var(--ember) 40%,var(--fire) 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 30px rgba(255,140,0,.5));}
+  .hero-sub{font-size:1.1rem;color:rgba(245,240,232,.65);margin-top:1rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;}
+  .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(245,240,232,.4);font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;animation:bounce 2s infinite;cursor:pointer;z-index:2;}
+  .scroll-hint svg{width:24px;height:24px;}
+  @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
 
-  .hero-content { position:relative; z-index:2; text-align:center; padding:2rem; animation:rise 1s ease-out both; }
-  @keyframes rise { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
-  .hero-emoji { font-size:5rem; display:block; margin-bottom:1rem; filter:drop-shadow(0 0 20px rgba(255,140,0,.8)); }
-  h1.big-title {
-    font-family:'Bebas Neue',sans-serif; font-size:clamp(4rem,12vw,9rem);
-    letter-spacing:.05em; line-height:.9;
-    background:linear-gradient(135deg,var(--gold) 0%,var(--ember) 40%,var(--fire) 80%);
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-    filter:drop-shadow(0 0 30px rgba(255,140,0,.5));
-  }
-  .hero-sub { font-size:1.1rem; color:rgba(245,240,232,.65); margin-top:1rem; font-weight:300; letter-spacing:.2em; text-transform:uppercase; }
-  .scroll-hint {
-    position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
-    display:flex; flex-direction:column; align-items:center; gap:.5rem;
-    color:rgba(245,240,232,.4); font-size:.8rem; letter-spacing:.15em; text-transform:uppercase;
-    animation:bounce 2s infinite; cursor:pointer; z-index:2;
-  }
-  .scroll-hint svg { width:24px; height:24px; }
-  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+  /* LOADING */
+  #loadingOverlay{position:fixed;inset:0;background:var(--charcoal);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;}
+  .loading-fire{font-size:3rem;animation:pulse-emoji 1s ease-in-out infinite alternate;}
+  @keyframes pulse-emoji{from{transform:scale(1)}to{transform:scale(1.2)}}
+  .loading-text{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.1em;color:var(--ember);}
+  .loading-sub{color:rgba(245,240,232,.3);font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;}
 
-  /* ── LOADING OVERLAY ── */
-  #loadingOverlay {
-    position:fixed; inset:0; background:var(--charcoal); z-index:9999;
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem;
-  }
-  .loading-fire { font-size:3rem; animation:pulse-emoji 1s ease-in-out infinite alternate; }
-  @keyframes pulse-emoji { from{transform:scale(1)} to{transform:scale(1.2)} }
-  .loading-text { font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:.1em; color:var(--ember); }
-  .loading-sub { color:rgba(245,240,232,.3); font-size:.8rem; letter-spacing:.15em; text-transform:uppercase; }
+  /* LIST */
+  .list-section{min-height:100vh;padding:4rem 1rem;background:var(--charcoal);}
+  .section-header{text-align:center;margin-bottom:3rem;}
+  .section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);letter-spacing:.05em;background:linear-gradient(135deg,var(--gold),var(--fire));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .section-sub{color:rgba(245,240,232,.45);font-size:.9rem;letter-spacing:.15em;text-transform:uppercase;margin-top:.4rem;}
+  .items-container{max-width:900px;margin:0 auto;}
+  .item-card{background:var(--smoke);border:1px solid var(--ash);border-radius:12px;padding:1rem 1.4rem;margin-bottom:.75rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;transition:all .25s ease;position:relative;overflow:hidden;}
+  .item-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--fire);transform:scaleY(0);transition:transform .25s ease;}
+  .item-card:hover::before{transform:scaleY(1);}
+  .item-card:hover{border-color:rgba(255,69,0,.3);background:#333;}
+  .item-name{font-size:1rem;font-weight:500;color:var(--light);flex:1;}
+  .item-assignees{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:flex-end;}
+  .assignee-badge{background:rgba(255,69,0,.15);border:1px solid rgba(255,69,0,.3);color:var(--ember);padding:.2rem .7rem;border-radius:20px;font-size:.78rem;font-weight:500;white-space:nowrap;}
+  .no-assignee{color:rgba(245,240,232,.25);font-size:.78rem;font-style:italic;}
 
-  /* ── LIST ── */
-  .list-section { min-height:100vh; padding:4rem 1rem; background:var(--charcoal); }
-  .section-header { text-align:center; margin-bottom:3rem; }
-  .section-title {
-    font-family:'Bebas Neue',sans-serif; font-size:clamp(2.5rem,6vw,4.5rem); letter-spacing:.05em;
-    background:linear-gradient(135deg,var(--gold),var(--fire));
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-  }
-  .section-sub { color:rgba(245,240,232,.45); font-size:.9rem; letter-spacing:.15em; text-transform:uppercase; margin-top:.4rem; }
-  .items-container { max-width:900px; margin:0 auto; }
+  /* EDIT */
+  .edit-section{background:linear-gradient(180deg,var(--charcoal) 0%,var(--smoke) 100%);padding:4rem 1rem 6rem;border-top:1px solid var(--ash);}
+  .edit-container{max-width:700px;margin:0 auto;}
+  .steps{display:flex;align-items:center;justify-content:center;margin-bottom:3rem;}
+  .step{display:flex;flex-direction:column;align-items:center;gap:.4rem;}
+  .step-num{width:36px;height:36px;border-radius:50%;border:2px solid var(--ash);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:rgba(245,240,232,.3);transition:all .3s;}
+  .step-label{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.3);transition:all .3s;}
+  .step.active .step-num{border-color:var(--fire);background:rgba(255,69,0,.15);color:var(--ember);}
+  .step.active .step-label{color:var(--ember);}
+  .step.done .step-num{border-color:var(--success);background:rgba(76,175,80,.15);color:var(--success);}
+  .step.done .step-label{color:var(--success);}
+  .step-line{flex:1;height:2px;background:var(--ash);margin:0 1rem;margin-bottom:1.4rem;max-width:80px;transition:background .3s;}
+  .step-line.done{background:var(--success);}
+  .edit-card{background:var(--smoke);border:1px solid var(--ash);border-radius:16px;padding:2rem;display:none;animation:fadeUp .4s ease both;}
+  .edit-card.active{display:block;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .edit-card-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.05em;color:var(--ember);margin-bottom:.3rem;}
+  .edit-card-sub{color:rgba(245,240,232,.4);font-size:.85rem;margin-bottom:1.8rem;}
+  .person-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.75rem;margin-bottom:1.5rem;}
+  .person-btn{padding:.9rem .5rem;background:var(--ash);border:2px solid transparent;border-radius:10px;color:var(--light);font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:500;cursor:pointer;transition:all .2s;text-align:center;}
+  .person-btn:hover{border-color:var(--fire);background:rgba(255,69,0,.1);}
+  .person-btn.selected{border-color:var(--fire);background:rgba(255,69,0,.2);color:var(--ember);}
+  .item-check-list{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem;}
+  .item-check{display:flex;align-items:center;gap:.9rem;padding:.85rem 1rem;background:var(--ash);border-radius:10px;cursor:pointer;transition:all .2s;border:2px solid transparent;user-select:none;}
+  .item-check:hover{border-color:rgba(255,69,0,.3);}
+  .item-check.checked{background:rgba(255,69,0,.12);border-color:rgba(255,69,0,.4);}
+  .custom-cb{width:20px;height:20px;border-radius:5px;border:2px solid rgba(245,240,232,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;background:var(--smoke);}
+  .item-check.checked .custom-cb{background:var(--fire);border-color:var(--fire);}
+  .custom-cb svg{display:none;}
+  .item-check.checked .custom-cb svg{display:block;}
+  .item-check-label{font-size:.9rem;flex:1;}
+  .item-check-assignees{display:flex;gap:.3rem;flex-wrap:wrap;}
+  .small-badge{font-size:.68rem;background:rgba(255,140,0,.12);border:1px solid rgba(255,140,0,.25);color:rgba(255,140,0,.7);padding:.1rem .5rem;border-radius:10px;}
+  .btn{padding:.85rem 2rem;border:none;border-radius:10px;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:600;cursor:pointer;transition:all .2s;letter-spacing:.03em;}
+  .btn-primary{background:linear-gradient(135deg,var(--fire),var(--ember));color:white;width:100%;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,69,0,.4);}
+  .btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none;}
+  .btn-ghost{background:transparent;color:rgba(245,240,232,.5);border:1px solid var(--ash);margin-right:.5rem;}
+  .btn-ghost:hover{color:var(--light);border-color:rgba(245,240,232,.3);}
+  .success-screen{text-align:center;padding:2rem 1rem;}
+  .success-icon{font-size:4rem;display:block;margin-bottom:1rem;}
+  .success-title{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--gold);margin-bottom:.5rem;}
+  .success-msg{color:rgba(245,240,232,.5);font-size:.9rem;}
 
-  .item-card {
-    background:var(--smoke); border:1px solid var(--ash); border-radius:12px;
-    padding:1rem 1.4rem; margin-bottom:.75rem;
-    display:flex; align-items:center; justify-content:space-between; gap:1rem;
-    transition:all .25s ease; position:relative; overflow:hidden;
-  }
-  .item-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--fire); transform:scaleY(0); transition:transform .25s ease; }
-  .item-card:hover::before { transform:scaleY(1); }
-  .item-card:hover { border-color:rgba(255,69,0,.3); background:#333; }
-  .item-name { font-size:1rem; font-weight:500; color:var(--light); flex:1; }
-  .item-assignees { display:flex; gap:.4rem; flex-wrap:wrap; justify-content:flex-end; }
-  .assignee-badge { background:rgba(255,69,0,.15); border:1px solid rgba(255,69,0,.3); color:var(--ember); padding:.2rem .7rem; border-radius:20px; font-size:.78rem; font-weight:500; white-space:nowrap; }
-  .no-assignee { color:rgba(245,240,232,.25); font-size:.78rem; font-style:italic; }
+  /* TOAST */
+  .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--smoke);border:1px solid var(--fire);color:var(--ember);padding:.8rem 1.5rem;border-radius:10px;font-size:.9rem;font-weight:500;z-index:1000;transition:transform .35s cubic-bezier(.34,1.56,.64,1);pointer-events:none;}
+  .toast.show{transform:translateX(-50%) translateY(0);}
 
-  /* ── EDIT ── */
-  .edit-section { background:linear-gradient(180deg,var(--charcoal) 0%,var(--smoke) 100%); padding:4rem 1rem 6rem; border-top:1px solid var(--ash); }
-  .edit-container { max-width:700px; margin:0 auto; }
-  .steps { display:flex; align-items:center; justify-content:center; margin-bottom:3rem; }
-  .step { display:flex; flex-direction:column; align-items:center; gap:.4rem; }
-  .step-num { width:36px; height:36px; border-radius:50%; border:2px solid var(--ash); display:flex; align-items:center; justify-content:center; font-family:'Bebas Neue',sans-serif; font-size:1.1rem; color:rgba(245,240,232,.3); transition:all .3s; }
-  .step-label { font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:rgba(245,240,232,.3); transition:all .3s; }
-  .step.active .step-num { border-color:var(--fire); background:rgba(255,69,0,.15); color:var(--ember); }
-  .step.active .step-label { color:var(--ember); }
-  .step.done .step-num { border-color:var(--success); background:rgba(76,175,80,.15); color:var(--success); }
-  .step.done .step-label { color:var(--success); }
-  .step-line { flex:1; height:2px; background:var(--ash); margin:0 1rem; margin-bottom:1.4rem; max-width:80px; transition:background .3s; }
-  .step-line.done { background:var(--success); }
+  /* DIVIDER */
+  .divider{max-width:900px;margin:3rem auto;display:flex;align-items:center;gap:1rem;}
+  .divider-line{flex:1;height:1px;background:linear-gradient(to right,transparent,var(--ash));}
+  .divider-line.right{background:linear-gradient(to left,transparent,var(--ash));}
+  .divider-text{color:rgba(245,240,232,.25);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;white-space:nowrap;}
 
-  .edit-card { background:var(--smoke); border:1px solid var(--ash); border-radius:16px; padding:2rem; display:none; animation:fadeUp .4s ease both; }
-  .edit-card.active { display:block; }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-  .edit-card-title { font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:.05em; color:var(--ember); margin-bottom:.3rem; }
-  .edit-card-sub { color:rgba(245,240,232,.4); font-size:.85rem; margin-bottom:1.8rem; }
-
-  .person-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:.75rem; margin-bottom:1.5rem; }
-  .person-btn { padding:.9rem .5rem; background:var(--ash); border:2px solid transparent; border-radius:10px; color:var(--light); font-family:'Outfit',sans-serif; font-size:.9rem; font-weight:500; cursor:pointer; transition:all .2s; text-align:center; }
-  .person-btn:hover { border-color:var(--fire); background:rgba(255,69,0,.1); }
-  .person-btn.selected { border-color:var(--fire); background:rgba(255,69,0,.2); color:var(--ember); }
-
-  .item-check-list { display:flex; flex-direction:column; gap:.5rem; margin-bottom:1.5rem; }
-  .item-check { display:flex; align-items:center; gap:.9rem; padding:.85rem 1rem; background:var(--ash); border-radius:10px; cursor:pointer; transition:all .2s; border:2px solid transparent; user-select:none; }
-  .item-check:hover { border-color:rgba(255,69,0,.3); }
-  .item-check.checked { background:rgba(255,69,0,.12); border-color:rgba(255,69,0,.4); }
-  .custom-cb { width:20px; height:20px; border-radius:5px; border:2px solid rgba(245,240,232,.3); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all .2s; background:var(--smoke); }
-  .item-check.checked .custom-cb { background:var(--fire); border-color:var(--fire); }
-  .custom-cb svg { display:none; }
-  .item-check.checked .custom-cb svg { display:block; }
-  .item-check-label { font-size:.9rem; flex:1; }
-  .item-check-assignees { display:flex; gap:.3rem; flex-wrap:wrap; }
-  .small-badge { font-size:.68rem; background:rgba(255,140,0,.12); border:1px solid rgba(255,140,0,.25); color:rgba(255,140,0,.7); padding:.1rem .5rem; border-radius:10px; }
-
-  .btn { padding:.85rem 2rem; border:none; border-radius:10px; font-family:'Outfit',sans-serif; font-size:.95rem; font-weight:600; cursor:pointer; transition:all .2s; letter-spacing:.03em; }
-  .btn-primary { background:linear-gradient(135deg,var(--fire),var(--ember)); color:white; width:100%; }
-  .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(255,69,0,.4); }
-  .btn-primary:disabled { opacity:.4; cursor:not-allowed; transform:none; box-shadow:none; }
-  .btn-ghost { background:transparent; color:rgba(245,240,232,.5); border:1px solid var(--ash); margin-right:.5rem; }
-  .btn-ghost:hover { color:var(--light); border-color:rgba(245,240,232,.3); }
-
-  .success-screen { text-align:center; padding:2rem 1rem; }
-  .success-icon { font-size:4rem; display:block; margin-bottom:1rem; }
-  .success-title { font-family:'Bebas Neue',sans-serif; font-size:2.5rem; color:var(--gold); margin-bottom:.5rem; }
-  .success-msg { color:rgba(245,240,232,.5); font-size:.9rem; }
-
-  /* ── TOAST ── */
-  .toast { position:fixed; bottom:2rem; left:50%; transform:translateX(-50%) translateY(100px); background:var(--smoke); border:1px solid var(--fire); color:var(--ember); padding:.8rem 1.5rem; border-radius:10px; font-size:.9rem; font-weight:500; z-index:1000; transition:transform .35s cubic-bezier(.34,1.56,.64,1); pointer-events:none; }
-  .toast.show { transform:translateX(-50%) translateY(0); }
-
-  /* ── DIVIDER ── */
-  .divider { max-width:900px; margin:3rem auto; display:flex; align-items:center; gap:1rem; }
-  .divider-line { flex:1; height:1px; background:linear-gradient(to right,transparent,var(--ash)); }
-  .divider-line.right { background:linear-gradient(to left,transparent,var(--ash)); }
-  .divider-text { color:rgba(245,240,232,.25); font-size:.75rem; letter-spacing:.15em; text-transform:uppercase; white-space:nowrap; }
-
-  /* ── ADMIN ── */
-  .admin-page { display:none; min-height:100vh; background:#0d0d0d; padding:2rem 1rem 4rem; }
-  .admin-page.visible { display:block; }
-  .admin-header { max-width:1100px; margin:0 auto 2rem; display:flex; align-items:center; gap:1rem; border-bottom:1px solid #222; padding-bottom:1.5rem; }
-  .admin-logo { font-family:'Bebas Neue',sans-serif; font-size:1.8rem; color:var(--fire); letter-spacing:.1em; }
-  .admin-badge { background:rgba(255,69,0,.15); border:1px solid rgba(255,69,0,.4); color:var(--fire); padding:.2rem .7rem; border-radius:20px; font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; }
-  .admin-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+  /* ADMIN */
+  .admin-page{display:none;min-height:100vh;background:#0d0d0d;padding:2rem 1rem 4rem;}
+  .admin-page.visible{display:block;}
+  .admin-header{max-width:1100px;margin:0 auto 2rem;display:flex;align-items:center;gap:1rem;border-bottom:1px solid #222;padding-bottom:1.5rem;}
+  .admin-logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--fire);letter-spacing:.1em;}
+  .admin-badge{background:rgba(255,69,0,.15);border:1px solid rgba(255,69,0,.4);color:var(--fire);padding:.2rem .7rem;border-radius:20px;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;}
+  .admin-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
   @media(max-width:700px){.admin-grid{grid-template-columns:1fr}}
-  .admin-panel { background:#171717; border:1px solid #222; border-radius:14px; padding:1.5rem; }
-  .admin-panel-full { grid-column:1/-1; }
-  .admin-panel-title { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:var(--ember); letter-spacing:.05em; margin-bottom:1rem; }
-  .admin-list { display:flex; flex-direction:column; gap:.4rem; margin-bottom:1rem; max-height:320px; overflow-y:auto; }
-  .admin-list-item { display:flex; align-items:center; gap:.5rem; padding:.6rem .8rem; background:#1f1f1f; border-radius:8px; font-size:.85rem; }
-  .admin-list-item input { background:transparent; border:none; color:var(--light); font-family:'Outfit',sans-serif; font-size:.85rem; flex:1; outline:none; }
-  .admin-list-item input:focus { color:var(--ember); }
-  .del-btn { background:none; border:none; color:rgba(229,57,53,.5); cursor:pointer; font-size:1rem; transition:color .2s; padding:0 .3rem; flex-shrink:0; }
-  .del-btn:hover { color:var(--danger); }
-  .add-row { display:flex; gap:.5rem; }
-  .admin-input { flex:1; background:#1f1f1f; border:1px solid #333; border-radius:8px; color:var(--light); font-family:'Outfit',sans-serif; font-size:.85rem; padding:.6rem .8rem; outline:none; transition:border-color .2s; }
-  .admin-input:focus { border-color:var(--fire); }
-  .add-btn { background:rgba(255,69,0,.2); border:1px solid rgba(255,69,0,.4); color:var(--ember); border-radius:8px; padding:.6rem 1rem; cursor:pointer; font-size:.85rem; font-family:'Outfit',sans-serif; transition:all .2s; white-space:nowrap; }
-  .add-btn:hover { background:rgba(255,69,0,.35); }
-  .admin-save-btn { background:linear-gradient(135deg,var(--fire),var(--ember)); border:none; border-radius:8px; color:white; font-family:'Outfit',sans-serif; font-size:.85rem; font-weight:600; padding:.7rem 1.5rem; cursor:pointer; margin-top:1rem; transition:all .2s; width:100%; }
-  .admin-save-btn:hover { box-shadow:0 4px 15px rgba(255,69,0,.4); transform:translateY(-1px); }
+  .admin-panel{background:#171717;border:1px solid #222;border-radius:14px;padding:1.5rem;}
+  .admin-panel-full{grid-column:1/-1;}
+  .admin-panel-title{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--ember);letter-spacing:.05em;margin-bottom:1rem;}
+  .admin-list{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem;max-height:320px;overflow-y:auto;}
+  .admin-list-item{display:flex;align-items:center;gap:.5rem;padding:.6rem .8rem;background:#1f1f1f;border-radius:8px;font-size:.85rem;}
+  .admin-list-item input{background:transparent;border:none;color:var(--light);font-family:'Outfit',sans-serif;font-size:.85rem;flex:1;outline:none;}
+  .admin-list-item input:focus{color:var(--ember);}
+  .del-btn{background:none;border:none;color:rgba(229,57,53,.5);cursor:pointer;font-size:1rem;transition:color .2s;padding:0 .3rem;flex-shrink:0;}
+  .del-btn:hover{color:var(--danger);}
+  .add-row{display:flex;gap:.5rem;}
+  .admin-input{flex:1;background:#1f1f1f;border:1px solid #333;border-radius:8px;color:var(--light);font-family:'Outfit',sans-serif;font-size:.85rem;padding:.6rem .8rem;outline:none;transition:border-color .2s;}
+  .admin-input:focus{border-color:var(--fire);}
+  .add-btn{background:rgba(255,69,0,.2);border:1px solid rgba(255,69,0,.4);color:var(--ember);border-radius:8px;padding:.6rem 1rem;cursor:pointer;font-size:.85rem;font-family:'Outfit',sans-serif;transition:all .2s;white-space:nowrap;}
+  .add-btn:hover{background:rgba(255,69,0,.35);}
+  .admin-save-btn{background:linear-gradient(135deg,var(--fire),var(--ember));border:none;border-radius:8px;color:white;font-family:'Outfit',sans-serif;font-size:.85rem;font-weight:600;padding:.7rem 1.5rem;cursor:pointer;margin-top:1rem;transition:all .2s;width:100%;}
+  .admin-save-btn:hover{box-shadow:0 4px 15px rgba(255,69,0,.4);transform:translateY(-1px);}
+  .history-table{width:100%;border-collapse:collapse;font-size:.8rem;}
+  .history-table th{text-align:left;color:rgba(245,240,232,.35);font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:.5rem .7rem;border-bottom:1px solid #222;}
+  .history-table td{padding:.6rem .7rem;border-bottom:1px solid #1a1a1a;color:rgba(245,240,232,.7);vertical-align:top;}
+  .history-table tr:hover td{background:#1a1a1a;}
+  .history-action{color:var(--ember);font-weight:500;}
+  .history-ip{font-family:monospace;color:rgba(245,240,232,.4);font-size:.75rem;}
+  .history-time{color:rgba(245,240,232,.3);font-size:.75rem;white-space:nowrap;}
+  .suspicious-list{display:flex;flex-direction:column;gap:.6rem;}
+  .suspicious-item{background:rgba(229,57,53,.07);border:1px solid rgba(229,57,53,.2);border-radius:8px;padding:.8rem 1rem;}
+  .suspicious-ip{font-family:monospace;color:var(--danger);font-size:.85rem;margin-bottom:.3rem;}
+  .suspicious-names{color:rgba(245,240,232,.5);font-size:.78rem;}
+  .suspicious-count{color:rgba(229,57,53,.7);font-size:.72rem;float:right;}
+  .admin-login{max-width:400px;margin:10vh auto 0;background:#171717;border:1px solid #222;border-radius:16px;padding:2.5rem;text-align:center;}
+  .admin-login-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--fire);margin-bottom:.3rem;}
+  .admin-login-sub{color:rgba(245,240,232,.3);font-size:.8rem;margin-bottom:2rem;}
+  .code-inputs{display:flex;gap:.7rem;justify-content:center;margin-bottom:1.5rem;}
+  .code-digit{width:52px;height:60px;background:#1f1f1f;border:2px solid #333;border-radius:10px;color:var(--light);font-family:'Bebas Neue',sans-serif;font-size:2rem;text-align:center;outline:none;transition:all .2s;}
+  .code-digit:focus{border-color:var(--fire);}
+  .code-digit.filled{border-color:rgba(255,69,0,.5);}
+  .login-error{color:var(--danger);font-size:.82rem;margin-bottom:1rem;display:none;}
+  .login-error.show{display:block;}
+  .no-suspicious,.no-history{color:rgba(245,240,232,.25);font-size:.85rem;text-align:center;padding:1rem;}
 
-  .history-table { width:100%; border-collapse:collapse; font-size:.8rem; }
-  .history-table th { text-align:left; color:rgba(245,240,232,.35); font-weight:500; letter-spacing:.08em; text-transform:uppercase; padding:.5rem .7rem; border-bottom:1px solid #222; }
-  .history-table td { padding:.6rem .7rem; border-bottom:1px solid #1a1a1a; color:rgba(245,240,232,.7); vertical-align:top; }
-  .history-table tr:hover td { background:#1a1a1a; }
-  .history-action { color:var(--ember); font-weight:500; }
-  .history-ip { font-family:monospace; color:rgba(245,240,232,.4); font-size:.75rem; }
-  .history-time { color:rgba(245,240,232,.3); font-size:.75rem; white-space:nowrap; }
-
-  .suspicious-list { display:flex; flex-direction:column; gap:.6rem; }
-  .suspicious-item { background:rgba(229,57,53,.07); border:1px solid rgba(229,57,53,.2); border-radius:8px; padding:.8rem 1rem; }
-  .suspicious-ip { font-family:monospace; color:var(--danger); font-size:.85rem; margin-bottom:.3rem; }
-  .suspicious-names { color:rgba(245,240,232,.5); font-size:.78rem; }
-  .suspicious-count { color:rgba(229,57,53,.7); font-size:.72rem; float:right; }
-
-  .admin-login { max-width:400px; margin:10vh auto 0; background:#171717; border:1px solid #222; border-radius:16px; padding:2.5rem; text-align:center; }
-  .admin-login-title { font-family:'Bebas Neue',sans-serif; font-size:2rem; color:var(--fire); margin-bottom:.3rem; }
-  .admin-login-sub { color:rgba(245,240,232,.3); font-size:.8rem; margin-bottom:2rem; }
-  .code-inputs { display:flex; gap:.7rem; justify-content:center; margin-bottom:1.5rem; }
-  .code-digit { width:52px; height:60px; background:#1f1f1f; border:2px solid #333; border-radius:10px; color:var(--light); font-family:'Bebas Neue',sans-serif; font-size:2rem; text-align:center; outline:none; transition:all .2s; }
-  .code-digit:focus { border-color:var(--fire); }
-  .code-digit.filled { border-color:rgba(255,69,0,.5); }
-  .login-error { color:var(--danger); font-size:.82rem; margin-bottom:1rem; display:none; }
-  .login-error.show { display:block; }
-  .no-suspicious,.no-history { color:rgba(245,240,232,.25); font-size:.85rem; text-align:center; padding:1rem; }
-
-  /* ── CONFIG BANNER ── */
-  .config-banner {
-    background:rgba(255,140,0,.1); border:1px solid rgba(255,140,0,.3);
-    border-radius:12px; padding:1.2rem 1.5rem; margin-bottom:2rem;
-    max-width:1100px; margin-left:auto; margin-right:auto;
-  }
-  .config-banner strong { color:var(--ember); }
-  .config-banner code { background:#111; padding:.1rem .4rem; border-radius:4px; font-size:.82rem; color:var(--gold); }
-  .config-banner p { font-size:.83rem; color:rgba(245,240,232,.6); margin-top:.4rem; line-height:1.6; }
-
-  @media(max-width:600px) {
-    .item-card { flex-direction:column; align-items:flex-start; }
-    .item-assignees { justify-content:flex-start; }
-    .person-grid { grid-template-columns:repeat(3,1fr); }
+  @media(max-width:600px){
+    .item-card{flex-direction:column;align-items:flex-start;}
+    .item-assignees{justify-content:flex-start;}
+    .person-grid{grid-template-columns:repeat(3,1fr);}
   }
 </style>
 </head>
 <body>
 
-<!-- LOADING -->
 <div id="loadingOverlay">
   <div class="loading-fire">🔥</div>
   <div class="loading-text">Chargement en cours…</div>
@@ -237,7 +183,7 @@
   <section class="hero">
     <div class="hero-content">
       <span class="hero-emoji">🔥</span>
-      <h1 class="big-title">BARBEUC<br></h1>
+      <h1 class="big-title">BBQ<br>des frères</h1>
       <p class="hero-sub">La liste pour être au point</p>
     </div>
     <div class="flames">
@@ -278,14 +224,12 @@
         <div class="step-line" id="line2"></div>
         <div class="step" id="step3-ind"><div class="step-num">3</div><div class="step-label">Validé</div></div>
       </div>
-
       <div class="edit-card active" id="editStep1">
         <div class="edit-card-title">T'es qui ?</div>
         <div class="edit-card-sub">Sélectionne ton prénom pour modifier ta liste</div>
         <div class="person-grid" id="personGrid"></div>
         <button class="btn btn-primary" id="btnStep1Next" disabled onclick="goToStep2()">Continuer →</button>
       </div>
-
       <div class="edit-card" id="editStep2">
         <div class="edit-card-title">Tu ramènes quoi ?</div>
         <div class="edit-card-sub" id="step2Sub">Coche les trucs que tu vas ramener</div>
@@ -295,11 +239,10 @@
           <button class="btn btn-primary" style="flex:1;" onclick="saveChanges()">Valider mes choix 🔥</button>
         </div>
       </div>
-
       <div class="edit-card" id="editStep3">
         <div class="success-screen">
           <span class="success-icon">✅</span>
-          <div class="success-title">C'est noté !</div>
+          <div class="success-title">C'est noté frère !</div>
           <p class="success-msg" id="successMsg">La liste a été mise à jour.</p>
           <br><br>
           <button class="btn btn-primary" style="max-width:300px;margin:0 auto;" onclick="resetEdit()">Modifier autre chose</button>
@@ -325,7 +268,6 @@
       <button class="btn btn-primary" onclick="checkAdminCode()">Accéder →</button>
     </div>
   </div>
-
   <div id="adminDashboard" style="display:none;">
     <div class="admin-header">
       <div class="admin-logo">🔥 BBQ Admin</div>
@@ -341,7 +283,6 @@
         </div>
         <button class="admin-save-btn" onclick="savePeople()">💾 Sauvegarder</button>
       </div>
-
       <div class="admin-panel">
         <div class="admin-panel-title">📦 Objets</div>
         <div class="admin-list" id="adminItemList"></div>
@@ -351,13 +292,11 @@
         </div>
         <button class="admin-save-btn" onclick="saveItems()">💾 Sauvegarder</button>
       </div>
-
       <div class="admin-panel">
         <div class="admin-panel-title">⚠️ IPs suspectes</div>
         <p style="color:rgba(245,240,232,.35);font-size:.78rem;margin-bottom:1rem;">IPs ayant modifié la liste de plusieurs personnes différentes</p>
         <div class="suspicious-list" id="suspiciousList"></div>
       </div>
-
       <div class="admin-panel admin-panel-full">
         <div class="admin-panel-title">📜 Historique des changements</div>
         <div style="overflow-x:auto;">
@@ -374,103 +313,103 @@
 
 <div class="toast" id="toast"></div>
 
-<!-- Supabase SDK -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
-// ═══════════════════════════════════════════════
-//  ⚙️  CONFIG SUPABASE — À REMPLIR
-// ═══════════════════════════════════════════════
-const SUPABASE_URL = 'https://ieffsqvvhmgxsexagccd.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllZmZzcXZ2aG1neHNleGFnY2NkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyMTc3MjYsImV4cCI6MjA5MDc5MzcyNn0.IOam1Q0ByBfbUPC509H8aAg7GlYkVY4w2DQIZrsR8Oc';
-const ADMIN_CODE = '2612';
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+//  CONFIG
+// ═══════════════════════════════════════════════════════
+const SUPABASE_URL     = 'https://ieffsqvvhmgxsexagccd.supabase.co';
+const SUPABASE_ANON_KEY= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllZmZzcXZ2aG1neHNleGFnY2NkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyMTc3MjYsImV4cCI6MjA5MDc5MzcyNn0.IOam1Q0ByBfbUPC509H8aAg7GlYkVY4w2DQIZrsR8Oc';
+const ADMIN_CODE       = '2612';
 
+// ═══════════════════════════════════════════════════════
+//  SUPABASE CLIENT
+// ═══════════════════════════════════════════════════════
 const { createClient } = supabase;
 const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// ── State ──────────────────────────────────────
-let STATE = { people: [], items: [], assignments: {} };
-let selectedPerson = null;
-let checkedItems = new Set();
+// ═══════════════════════════════════════════════════════
+//  STATE
+//  people      → [{ id, name, ordre }]
+//  items       → [{ id, name, ordre }]
+//  assignments → [{ id, item_id, person_id }]
+// ═══════════════════════════════════════════════════════
+let STATE = { people: [], items: [], assignments: [] };
+let selectedPersonId = null;   // UUID de la personne sélectionnée
+let checkedItemIds   = new Set(); // UUIDs des objets cochés
 let userIP = 'inconnu';
 
-// ── IP ─────────────────────────────────────────
 fetch('https://api.ipify.org?format=json')
-  .then(r => r.json()).then(d => { userIP = d.ip || 'inconnu'; }).catch(() => {});
+  .then(r=>r.json()).then(d=>{ userIP=d.ip||'inconnu'; }).catch(()=>{});
 
-// ═══════════════════════════════════════════════
-//  SUPABASE DATA LAYER
-// ═══════════════════════════════════════════════
-
+// ═══════════════════════════════════════════════════════
+//  DATA LAYER — lecture depuis Supabase
+// ═══════════════════════════════════════════════════════
 async function loadAll() {
-  // Fetch config rows (people, items, assignments stored as JSON in a single row each)
-  const { data: config, error } = await db.from('bbq_config').select('*');
-  if (error) { console.error(error); return; }
-
-  config.forEach(row => {
-    if (row.key === 'people')      STATE.people      = row.value;
-    if (row.key === 'items')       STATE.items       = row.value;
-    if (row.key === 'assignments') STATE.assignments = row.value;
-  });
+  const [{ data: people }, { data: items }, { data: assignments }] = await Promise.all([
+    db.from('people').select('*').order('ordre'),
+    db.from('items').select('*').order('ordre'),
+    db.from('assignments').select('*'),
+  ]);
+  STATE.people      = people      || [];
+  STATE.items       = items       || [];
+  STATE.assignments = assignments || [];
 }
 
-async function saveConfig(key, value) {
-  const { error } = await db.from('bbq_config')
-    .upsert({ key, value }, { onConflict: 'key' });
-  if (error) { console.error('saveConfig error:', error); showToast('❌ Erreur de sauvegarde'); return false; }
-  return true;
+// Helpers
+function personById(id)    { return STATE.people.find(p => p.id === id); }
+function itemById(id)      { return STATE.items.find(i => i.id === id); }
+function assigneesOf(itemId) {
+  return STATE.assignments
+    .filter(a => a.item_id === itemId)
+    .map(a => personById(a.person_id))
+    .filter(Boolean);
+}
+function itemsOfPerson(personId) {
+  return STATE.assignments
+    .filter(a => a.person_id === personId)
+    .map(a => itemById(a.item_id))
+    .filter(Boolean);
 }
 
-async function logHistory(person, action) {
-  await db.from('bbq_history').insert({ person, action, ip: userIP });
-}
-
-async function loadHistory() {
-  const { data, error } = await db.from('bbq_history')
-    .select('*').order('created_at', { ascending: false }).limit(500);
-  if (error) return [];
-  return data;
-}
-
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 //  ROUTING
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 function checkRoute() {
   const isAdmin = window.location.hash === '#admin';
-  document.getElementById('mainPage').style.display  = isAdmin ? 'none' : 'block';
+  document.getElementById('mainPage').style.display = isAdmin ? 'none' : 'block';
   const ap = document.getElementById('adminPage');
   if (isAdmin) {
     ap.classList.add('visible');
-    document.getElementById('adminLoginBox').style.display   = 'block';
-    document.getElementById('adminDashboard').style.display  = 'none';
+    document.getElementById('adminLoginBox').style.display  = 'block';
+    document.getElementById('adminDashboard').style.display = 'none';
   } else {
     ap.classList.remove('visible');
   }
 }
 window.addEventListener('hashchange', checkRoute);
 
-// ═══════════════════════════════════════════════
-//  RENDER PUBLIC LIST
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+//  RENDER — liste publique
+// ═══════════════════════════════════════════════════════
 function renderList() {
   const container = document.getElementById('itemsDisplay');
   if (!container) return;
   container.innerHTML = '';
   STATE.items.forEach(item => {
-    const assigned = STATE.assignments[item] || [];
+    const assigned = assigneesOf(item.id);
     const card = document.createElement('div');
     card.className = 'item-card';
     const nameEl = document.createElement('div');
-    nameEl.className = 'item-name'; nameEl.textContent = item;
+    nameEl.className = 'item-name'; nameEl.textContent = item.name;
     const badgesEl = document.createElement('div');
     badgesEl.className = 'item-assignees';
-    if (assigned.length === 0) {
+    if (!assigned.length) {
       badgesEl.innerHTML = '<span class="no-assignee">—</span>';
     } else {
-      assigned.forEach(name => {
+      assigned.forEach(p => {
         const b = document.createElement('span');
-        b.className = 'assignee-badge'; b.textContent = name;
+        b.className = 'assignee-badge'; b.textContent = p.name;
         badgesEl.appendChild(b);
       });
     }
@@ -479,19 +418,19 @@ function renderList() {
   });
 }
 
-// ═══════════════════════════════════════════════
-//  EDIT FLOW
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+//  RENDER — grille de personnes (étape 1)
+// ═══════════════════════════════════════════════════════
 function renderPersonGrid() {
   const grid = document.getElementById('personGrid');
   if (!grid) return;
   grid.innerHTML = '';
-  STATE.people.forEach(name => {
+  STATE.people.forEach(person => {
     const btn = document.createElement('button');
-    btn.className = 'person-btn' + (name === selectedPerson ? ' selected' : '');
-    btn.textContent = name;
+    btn.className = 'person-btn' + (person.id === selectedPersonId ? ' selected' : '');
+    btn.textContent = person.name;
     btn.onclick = () => {
-      selectedPerson = name;
+      selectedPersonId = person.id;
       document.querySelectorAll('.person-btn').forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
       document.getElementById('btnStep1Next').disabled = false;
@@ -500,13 +439,15 @@ function renderPersonGrid() {
   });
 }
 
+// ═══════════════════════════════════════════════════════
+//  EDIT FLOW
+// ═══════════════════════════════════════════════════════
 function goToStep2() {
-  if (!selectedPerson) return;
-  checkedItems = new Set();
-  STATE.items.forEach(item => {
-    if ((STATE.assignments[item] || []).includes(selectedPerson)) checkedItems.add(item);
-  });
-  document.getElementById('step2Sub').textContent = `Salut ${selectedPerson} ! Coche ce que tu ramènes 👇`;
+  if (!selectedPersonId) return;
+  // Pré-cocher les objets déjà assignés à cette personne
+  checkedItemIds = new Set(itemsOfPerson(selectedPersonId).map(i => i.id));
+  const person = personById(selectedPersonId);
+  document.getElementById('step2Sub').textContent = `Salut ${person.name} ! Coche ce que tu ramènes 👇`;
   renderItemChecklist();
   setStep(2);
 }
@@ -516,8 +457,9 @@ function renderItemChecklist() {
   if (!list) return;
   list.innerHTML = '';
   STATE.items.forEach(item => {
-    const isChecked = checkedItems.has(item);
-    const others = (STATE.assignments[item] || []).filter(n => n !== selectedPerson && n !== 'Chacun amène');
+    const isChecked = checkedItemIds.has(item.id);
+    // Autres personnes déjà assignées à cet objet (hors moi)
+    const others = assigneesOf(item.id).filter(p => p.id !== selectedPersonId);
     const div = document.createElement('div');
     div.className = 'item-check' + (isChecked ? ' checked' : '');
     div.innerHTML = `
@@ -526,12 +468,12 @@ function renderItemChecklist() {
           <path d="M1 5l3.5 3.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <div class="item-check-label">${item}</div>
-      ${others.length ? '<div class="item-check-assignees">' + others.map(n => `<span class="small-badge">${n}</span>`).join('') + '</div>' : ''}
+      <div class="item-check-label">${item.name}</div>
+      ${others.length ? '<div class="item-check-assignees">'+others.map(p=>`<span class="small-badge">${p.name}</span>`).join('')+'</div>' : ''}
     `;
     div.onclick = () => {
-      if (checkedItems.has(item)) { checkedItems.delete(item); div.classList.remove('checked'); }
-      else { checkedItems.add(item); div.classList.add('checked'); }
+      if (checkedItemIds.has(item.id)) { checkedItemIds.delete(item.id); div.classList.remove('checked'); }
+      else { checkedItemIds.add(item.id); div.classList.add('checked'); }
     };
     list.appendChild(div);
   });
@@ -540,38 +482,46 @@ function renderItemChecklist() {
 function goToStep1() { setStep(1); }
 
 async function saveChanges() {
-  // Snapshot previous state
-  const prev = {};
-  STATE.items.forEach(i => { prev[i] = [...(STATE.assignments[i] || [])]; });
+  const person = personById(selectedPersonId);
+  if (!person) return;
 
-  // Apply changes
-  STATE.items.forEach(item => {
-    let arr = (STATE.assignments[item] || []).filter(n => n !== selectedPerson);
-    if (checkedItems.has(item)) arr.push(selectedPerson);
-    STATE.assignments[item] = arr;
-  });
+  // Calcul diff : quels objets étaient cochés avant ?
+  const prevItemIds = new Set(itemsOfPerson(selectedPersonId).map(i => i.id));
+  const toAdd    = [...checkedItemIds].filter(id => !prevItemIds.has(id));
+  const toRemove = [...prevItemIds].filter(id => !checkedItemIds.has(id));
 
-  // Persist to Supabase
-  const ok = await saveConfig('assignments', STATE.assignments);
-  if (!ok) return;
-
-  // Log history
-  const added   = STATE.items.filter(i => checkedItems.has(i) && !prev[i].includes(selectedPerson));
-  const removed = STATE.items.filter(i => !checkedItems.has(i) && prev[i].includes(selectedPerson));
-  if (added.length || removed.length) {
-    const parts = [];
-    if (added.length)   parts.push('➕ ' + added.join(', '));
-    if (removed.length) parts.push('➖ ' + removed.join(', '));
-    await logHistory(selectedPerson, parts.join(' | '));
+  // Supprimer les liaisons retirées
+  if (toRemove.length) {
+    await db.from('assignments')
+      .delete()
+      .eq('person_id', selectedPersonId)
+      .in('item_id', toRemove);
   }
 
-  document.getElementById('successMsg').textContent = `Nickel ${selectedPerson}, ta liste est à jour ! 🔥`;
+  // Ajouter les nouvelles liaisons
+  if (toAdd.length) {
+    await db.from('assignments').insert(
+      toAdd.map(item_id => ({ person_id: selectedPersonId, item_id }))
+    );
+  }
+
+  // Log historique
+  if (toAdd.length || toRemove.length) {
+    const parts = [];
+    if (toAdd.length)    parts.push('➕ ' + toAdd.map(id => itemById(id)?.name).join(', '));
+    if (toRemove.length) parts.push('➖ ' + toRemove.map(id => itemById(id)?.name).join(', '));
+    await db.from('history').insert({ person_name: person.name, action: parts.join(' | '), ip: userIP });
+  }
+
+  // Recharger les données
+  await loadAll();
+  document.getElementById('successMsg').textContent = `Nickel ${person.name}, ta liste est à jour ! 🔥`;
   setStep(3);
   renderList();
 }
 
 function resetEdit() {
-  selectedPerson = null; checkedItems = new Set();
+  selectedPersonId = null; checkedItemIds = new Set();
   renderPersonGrid();
   document.getElementById('btnStep1Next').disabled = true;
   setStep(1);
@@ -580,15 +530,15 @@ function resetEdit() {
 function setStep(n) {
   ['editStep1','editStep2','editStep3'].forEach((id,i) => document.getElementById(id).classList.toggle('active', i+1===n));
   ['step1-ind','step2-ind','step3-ind'].forEach((id,i) => {
-    document.getElementById(id).className = 'step' + (i+1<n ? ' done' : i+1===n ? ' active' : '');
+    document.getElementById(id).className = 'step'+(i+1<n?' done':i+1===n?' active':'');
   });
   document.getElementById('line1').classList.toggle('done', n>1);
   document.getElementById('line2').classList.toggle('done', n>2);
 }
 
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 //  ADMIN LOGIN
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 function codeInput(el, idx) {
   el.value = el.value.replace(/[^0-9]/g,'');
   if (el.value) {
@@ -597,19 +547,17 @@ function codeInput(el, idx) {
     if (idx < 3) inputs[idx+1].focus(); else checkAdminCode();
   } else { el.classList.remove('filled'); }
 }
-
 function codeNav(e, idx) {
   if (e.key==='Backspace') {
     const inputs = document.querySelectorAll('.code-digit');
     if (!inputs[idx].value && idx>0) inputs[idx-1].focus();
   }
 }
-
 function checkAdminCode() {
   const inputs = document.querySelectorAll('.code-digit');
   const code = [...inputs].map(i=>i.value).join('');
   if (code === ADMIN_CODE) {
-    document.getElementById('adminLoginBox').style.display = 'none';
+    document.getElementById('adminLoginBox').style.display  = 'none';
     document.getElementById('adminDashboard').style.display = 'block';
     renderAdminDashboard();
   } else {
@@ -620,32 +568,32 @@ function checkAdminCode() {
   }
 }
 
-// ═══════════════════════════════════════════════
-//  ADMIN DASHBOARD
-// ═══════════════════════════════════════════════
-async function renderAdminDashboard() {
-  renderAdminPeople(); renderAdminItems();
-  await renderHistory(); renderSuspicious();
-}
-
+// ═══════════════════════════════════════════════════════
+//  ADMIN — PERSONNES
+// ═══════════════════════════════════════════════════════
 function renderAdminPeople() {
   const list = document.getElementById('adminPersonList');
   list.innerHTML = '';
-  STATE.people.forEach((name, i) => {
+  STATE.people.forEach(person => {
     const row = document.createElement('div');
     row.className = 'admin-list-item';
     const inp = document.createElement('input');
-    inp.type='text'; inp.value=name;
-    inp.onchange = () => { STATE.people[i] = inp.value; };
+    inp.type='text'; inp.value=person.name;
+    // Sauvegarde inline au blur
+    inp.onblur = async () => {
+      if (inp.value.trim() === person.name) return;
+      await db.from('people').update({ name: inp.value.trim() }).eq('id', person.id);
+      person.name = inp.value.trim(); // mise à jour locale immédiate
+      renderList(); renderPersonGrid();
+      showToast('✅ Nom mis à jour !');
+    };
     const del = document.createElement('button');
     del.className='del-btn'; del.textContent='✕';
     del.onclick = async () => {
-      STATE.people.splice(i, 1);
-      await saveConfig('people', STATE.people);
-      await loadAll();
-      renderAdminPeople();
-      renderList();
-      renderPersonGrid();
+      if (!confirm(`Supprimer "${person.name}" et toutes ses assignations ?`)) return;
+      await db.from('assignments').delete().eq('person_id', person.id);
+      await db.from('people').delete().eq('id', person.id);
+      await loadAll(); renderAdminPeople(); renderList(); renderPersonGrid();
     };
     row.appendChild(inp); row.appendChild(del); list.appendChild(row);
   });
@@ -654,36 +602,47 @@ function renderAdminPeople() {
 function addPerson() {
   const input = document.getElementById('newPersonInput');
   const name = input.value.trim(); if (!name) return;
-  STATE.people.push(name); input.value=''; renderAdminPeople();
+  input.value = '';
+  // Calcul de l'ordre (après le dernier)
+  const maxOrdre = STATE.people.reduce((m,p)=>Math.max(m,p.ordre||0), 0);
+  db.from('people').insert({ name, ordre: maxOrdre + 1 }).select().then(async ({ data, error }) => {
+    if (error) { showToast('❌ Erreur'); return; }
+    await loadAll(); renderAdminPeople(); renderPersonGrid();
+    showToast('✅ ' + name + ' ajouté !');
+  });
 }
 
 async function savePeople() {
-  const ok = await saveConfig('people', STATE.people);
-  if (!ok) return;
-  // Recharge depuis Supabase pour être sûr que STATE est à jour
-  await loadAll();
-  renderList();
-  renderPersonGrid();
-  showToast('✅ Personnes sauvegardées !');
+  // Les noms sont sauvegardés inline au blur, ce bouton force un reload propre
+  await loadAll(); renderList(); renderPersonGrid(); renderAdminPeople();
+  showToast('✅ Personnes synchronisées !');
 }
 
+// ═══════════════════════════════════════════════════════
+//  ADMIN — OBJETS
+// ═══════════════════════════════════════════════════════
 function renderAdminItems() {
   const list = document.getElementById('adminItemList');
   list.innerHTML = '';
-  STATE.items.forEach((name, i) => {
+  STATE.items.forEach(item => {
     const row = document.createElement('div');
     row.className = 'admin-list-item';
     const inp = document.createElement('input');
-    inp.type='text'; inp.value=name;
-    inp.onchange = () => { STATE.items[i] = inp.value; };
+    inp.type='text'; inp.value=item.name;
+    inp.onblur = async () => {
+      if (inp.value.trim() === item.name) return;
+      await db.from('items').update({ name: inp.value.trim() }).eq('id', item.id);
+      item.name = inp.value.trim();
+      renderList();
+      showToast('✅ Objet mis à jour !');
+    };
     const del = document.createElement('button');
     del.className='del-btn'; del.textContent='✕';
     del.onclick = async () => {
-      STATE.items.splice(i, 1);
-      await saveConfig('items', STATE.items);
-      await loadAll();
-      renderAdminItems();
-      renderList();
+      if (!confirm(`Supprimer "${item.name}" et toutes ses assignations ?`)) return;
+      await db.from('assignments').delete().eq('item_id', item.id);
+      await db.from('items').delete().eq('id', item.id);
+      await loadAll(); renderAdminItems(); renderList();
     };
     row.appendChild(inp); row.appendChild(del); list.appendChild(row);
   });
@@ -692,33 +651,38 @@ function renderAdminItems() {
 function addItem() {
   const input = document.getElementById('newItemInput');
   const name = input.value.trim(); if (!name) return;
-  STATE.items.push(name); input.value=''; renderAdminItems();
+  input.value = '';
+  const maxOrdre = STATE.items.reduce((m,i)=>Math.max(m,i.ordre||0), 0);
+  db.from('items').insert({ name, ordre: maxOrdre + 1 }).select().then(async ({ data, error }) => {
+    if (error) { showToast('❌ Erreur'); return; }
+    await loadAll(); renderAdminItems(); renderList();
+    showToast('✅ ' + name + ' ajouté !');
+  });
 }
 
 async function saveItems() {
-  const ok = await saveConfig('items', STATE.items);
-  if (!ok) return;
-  await loadAll();
-  renderList();
-  renderPersonGrid();
-  showToast('✅ Objets sauvegardés !');
+  await loadAll(); renderList(); renderAdminItems();
+  showToast('✅ Objets synchronisés !');
 }
 
+// ═══════════════════════════════════════════════════════
+//  ADMIN — HISTORIQUE & SUSPECTS
+// ═══════════════════════════════════════════════════════
 async function renderHistory() {
-  const history = await loadHistory();
-  const tbody = document.getElementById('historyBody');
-  const noHistory = document.getElementById('noHistory');
+  const { data: history } = await db.from('history')
+    .select('*').order('created_at', { ascending: false }).limit(500);
+  const tbody    = document.getElementById('historyBody');
+  const noHistory= document.getElementById('noHistory');
   tbody.innerHTML = '';
-  if (!history.length) { noHistory.style.display='block'; return; }
+  if (!history?.length) { noHistory.style.display='block'; return; }
   noHistory.style.display='none';
   history.forEach(e => {
     const tr = document.createElement('tr');
-    const d = new Date(e.created_at);
+    const d  = new Date(e.created_at);
     const ds = d.toLocaleDateString('fr-FR')+' '+d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
-    tr.innerHTML = `<td class="history-time">${ds}</td><td>${e.person||'—'}</td><td class="history-action">${e.action||'—'}</td><td class="history-ip">${e.ip||'—'}</td>`;
+    tr.innerHTML = `<td class="history-time">${ds}</td><td>${e.person_name||'—'}</td><td class="history-action">${e.action||'—'}</td><td class="history-ip">${e.ip||'—'}</td>`;
     tbody.appendChild(tr);
   });
-  // Store for suspicious rendering
   window._historyCache = history;
 }
 
@@ -726,45 +690,55 @@ function renderSuspicious() {
   const history = window._historyCache || [];
   const ipMap = {};
   history.forEach(e => {
-    if (!e.ip||e.ip==='inconnu') return;
+    if (!e.ip || e.ip==='inconnu') return;
     if (!ipMap[e.ip]) ipMap[e.ip] = new Set();
-    ipMap[e.ip].add(e.person);
+    ipMap[e.ip].add(e.person_name);
   });
   const suspects = Object.entries(ipMap).filter(([,p])=>p.size>1);
   const list = document.getElementById('suspiciousList');
   list.innerHTML = '';
   if (!suspects.length) { list.innerHTML='<div class="no-suspicious">Aucune activité suspecte 👍</div>'; return; }
   suspects.forEach(([ip, people]) => {
-    const div = document.createElement('div');
-    div.className='suspicious-item';
+    const div = document.createElement('div'); div.className='suspicious-item';
     div.innerHTML=`<div class="suspicious-ip">🔴 ${ip} <span class="suspicious-count">${people.size} personnes</span></div><div class="suspicious-names">A modifié les listes de : ${[...people].join(', ')}</div>`;
     list.appendChild(div);
   });
 }
 
-// ── Realtime subscription ──────────────────────
+async function renderAdminDashboard() {
+  renderAdminPeople(); renderAdminItems();
+  await renderHistory(); renderSuspicious();
+}
+
+// ═══════════════════════════════════════════════════════
+//  REALTIME — mise à jour auto pour tous les onglets
+// ═══════════════════════════════════════════════════════
 function subscribeRealtime() {
-  db.channel('bbq_config_changes')
-    .on('postgres_changes', { event: '*', schema: 'public', table: 'bbq_config' }, async () => {
-      await loadAll();
-      renderList();
-      renderPersonGrid();
+  db.channel('bbq-changes')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'people' }, async () => {
+      await loadAll(); renderList(); renderPersonGrid();
+    })
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'items' }, async () => {
+      await loadAll(); renderList();
+    })
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'assignments' }, async () => {
+      await loadAll(); renderList();
     })
     .subscribe();
 }
 
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 //  TOAST
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent=msg; t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'), 3000);
 }
 
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 //  BOOT
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 async function boot() {
   checkRoute();
   await loadAll();
@@ -772,7 +746,9 @@ async function boot() {
   renderPersonGrid();
   subscribeRealtime();
   document.getElementById('loadingOverlay').style.display = 'none';
-  document.getElementById('mainPage').style.display = window.location.hash === '#admin' ? 'none' : 'block';
+  if (window.location.hash !== '#admin') {
+    document.getElementById('mainPage').style.display = 'block';
+  }
 }
 
 boot();
